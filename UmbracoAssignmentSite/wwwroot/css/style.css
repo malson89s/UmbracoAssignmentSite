@@ -4,7 +4,7 @@
     --clr-neutral: #ffffff;
     --clr-white: #F2EDDC;
     --clr-white-100: #F7F7F7;
-    --clr-dark: #0E0E0E;
+    --clr-primary: #0E0E0E;
     --clr-primary: #4F5955;
     --clr-main-light: #606966;
     --clr-accent: #F2EDDC;
@@ -12,8 +12,8 @@
     --clr-gray-400: #4B5264;
     --clr-body-text: #535656;
     --clr-body-text-100: #999999;
-    --clr-note1: #9C9EA6;
-    --clr-borden_gray: #EAEAEA;
+    --clr-neutral: #9C9EA6;
+    --clr-border-gray: #EAEAEA;
     --clr-border-400: #C7C8C9;
 }
 

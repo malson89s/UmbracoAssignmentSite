@@ -363,3 +363,16 @@ MigrationBackup/
 FodyWeavers.xsd
 /UmbracoAssignmentSite/appsettings.json
 /UmbracoAssignmentSite/appsettings.Development.json
+
+# --- Umbraco runtime (ska inte till Git)
+umbraco/Data/
+umbraco/Logs/
+
+# Lokala databaser (SQLite m.m.)
+*.db
+*.db-shm
+*.db-wal
+
+# Lokala/privata inställningar
+appsettings.*.local.json
+**/Properties/PublishProfiles/*.pubxml.user

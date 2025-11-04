@@ -10,7 +10,7 @@
 	var siteSettings = rootContent.OfType<SiteSettings>().FirstOrDefault();
 
 	var siteName = siteSettings?.SiteName ?? "Onatrix";
-	var title = Model.Level == 1 ? $"{siteName}" : $"{siteName} |{Model.Name}";
+	var title = Model.Level == 1 ? $"{siteName}" : $"{siteName} | {Model.Name}";
 
 }
 

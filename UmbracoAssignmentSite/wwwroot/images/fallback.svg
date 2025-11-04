@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Fallback-bild" viewBox="0 0 160 90" width="160" height="90">
+  <defs>
+    <linearGradient id="g" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="currentColor" stop-opacity=".12"></stop>
+      <stop offset="1" stop-color="currentColor" stop-opacity=".06"></stop>
+    </linearGradient>
+  </defs>
+  <rect width="160" height="90" rx="8" fill="url(#g)"></rect>
+  <g fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="2">
+    <rect x="20" y="18" width="36" height="36" rx="6"></rect>
+    <path d="M20 66l20-16 20 16 10-8 10 8"></path>
+    <circle cx="46" cy="30" r="6"></circle>
+  </g>
+  <text x="80" y="80" text-anchor="middle" fill="currentColor" fill-opacity=".6" font-family="system-ui, -apple-system, Segoe UI, Roboto" font-size="10">
+    Ingen bild
+  </text>
+</svg>
