@@ -1,4 +1,6 @@
 ﻿@import "tailwindcss";
+@import "./rte.css";
+@import "./forms.css";
 
 
 @theme {
@@ -15,10 +17,12 @@
     --color-body-text-100: #999999;
     --color-note1: #9C9EA6;
     --color-border-gray: #EAEAEA;
+    --color-border-gray-300: #EBEBEB;
     --color-border-400: #C7C8C9;
+    --color-bg-white-100: #F7F7F7;
+
 
     --font-poppins: "poppins", sans-serif;
-
     --text-rte-xl: 4.375rem;
     --text-rte-lg: 2.5rem;
     --text-rte-md: 1.25rem;

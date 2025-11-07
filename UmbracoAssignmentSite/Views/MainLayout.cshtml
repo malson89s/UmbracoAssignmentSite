@@ -1,14 +1,9 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 @{
-
 	Layout = null;
-	// var  siteName = odel.Level == 1 ? "Onatrix" : $"Onatrix | {Model.Name}";
-	// var pageTitle = !string.IsNullOrEmpty(Model.Name) ? $"Onatrix | {Model.Name}" : "Onatrix";
-
 	var rootContent = Umbraco.ContentAtRoot();
 	var siteSettings = rootContent.OfType<SiteSettings>().FirstOrDefault();
-
 	var siteName = siteSettings?.SiteName ?? "Onatrix";
 	var title = Model.Level == 1 ? $"{siteName}" : $"{siteName} | {Model.Name}";
 
@@ -28,7 +23,13 @@
 	<partial name="Partials/Layout/_Topbar" />
 	<partial name="Partials/Layout/_Header" />
 
-	@RenderBody()
+    <main>
+		@RenderBody()
+	</main>
+
+
+	<script src="~/js/form.js"></script>
+
 </body>
 </html>
 
