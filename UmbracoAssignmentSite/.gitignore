@@ -457,6 +457,7 @@ $RECYCLE.BIN/
 ## Umbraco CMS
 ##
 
+
 # JSON schema files for appsettings.json
 appsettings-schema.json
 appsettings-schema.*.json
@@ -480,3 +481,7 @@ umbraco-package-schema.json
 
 # Media files
 /wwwroot/media/
+
+# Tailwind generated CSS
+UmbracoAssignmentSite/wwwroot/css/output.css
+UmbracoAssignmentSite/wwwroot/css/output.css.map
