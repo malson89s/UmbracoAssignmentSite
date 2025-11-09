@@ -1,0 +1,40 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
+
+@{
+	var content = (ContentModels.ChooseUsSection)Model.Content;
+
+	var bgImageUrl = content.ChooseBgImage?.Url() ?? Url.Content("~/images/world.svg");
+	var peopleImageUrl = content.ChoosePeopleImage?.Url() ?? Url.Content("~/images/people.svg");
+
+	var linkUrl = content.ChooseLink?.ToString();
+}
+
+
+<section class="relative py-[6rem]">
+	<div class="max-w-5xl mx-auto px-4 text-center">
+		<div class=" max-w-7xl mx-auto px-4 relative z-10">
+			<h1 class="text-[2.5rem] text-primary font-bold leading-none-none">
+				@content.ChooseTitle
+			</h1>
+			<div class="rte mt-4 max-w-3xl mx-auto">
+				@Html.Raw(content.ChooseText)
+
+				@if (!string.IsNullOrWhiteSpace(linkUrl))
+				{
+					<a href="@linkUrl" class="inline-block mt-6 px-8 py-3 bg-primary text-white font-semibold rounded">
+						Read our story
+					</a>
+				}
+			</div>
+
+			<img src="@bgImageUrl" alt="background world svg" class="pointer-events-none absolute inset-x-0 top-[3rem] mx-auto -z-10 max-w-full" />
+
+			<div class="flex justify-center mt-10 relative z-0"> 
+				<img src="@peopleImageUrl" alt="group of people img"  class="max-w-full" />
+			</div>
+
+		</div>
+	</div>
+</section>
