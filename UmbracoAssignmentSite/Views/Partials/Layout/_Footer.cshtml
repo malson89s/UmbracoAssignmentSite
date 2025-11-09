@@ -1,0 +1,25 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+
+@{
+	var rootContent = Umbraco.ContentAtRoot();
+	var siteSettings = rootContent.OfType<SiteSettings>().FirstOrDefault();
+
+	var copyright = siteSettings?.Value<string>("copyrightText");
+	if (string.IsNullOrWhiteSpace(copyright))
+	{
+		copyright = "© Onatrix. All Rights Reserved. Credits to ";
+	}
+
+}
+
+
+<footer class="bg-black py-3 ">
+	<div class="max-w-7xl mx-auto px-4 text-center">
+		<p class="text-primary text-sm">
+			@copyright
+			<span class="text-secondary">Themesflat</span>
+		</p>
+	</div>
+</footer>
