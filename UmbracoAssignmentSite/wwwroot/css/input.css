@@ -57,5 +57,5 @@ body {
 }
 
 img {
-    @apply w-full h-auto object-cover;
+    @apply h-auto;
 }

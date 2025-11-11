@@ -1,0 +1,101 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Extensions;
+@using System.Linq;
+
+@{
+    var content = (ContentModels.ContactInfoSection)Model.Content;
+
+    var siteSettings = Umbraco
+        .ContentAtRoot()
+        .DescendantsOrSelf<ContentModels.SiteSettings>()
+        .FirstOrDefault();
+
+    var image = content.ContactInfoImage;
+    var backgroundRect = content.BackgroundRectangle;
+    var backgroundDots = content.BackgroundDots;
+    var title = content.ContactInfoTitle?.ToString();
+
+    var address = siteSettings?.ContactAddress;
+    var phone = siteSettings?.ContactPhone;
+    var email = siteSettings?.ContactEmail;
+}
+
+<section class="py-[4rem] bg-white-100 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 lg:px-0 grid gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] items-center">
+        <div class="relative flex justify-center">
+            @* 1. Rektangeln bakom personen *@
+            @if (backgroundRect != null)
+            {
+                <img src="@backgroundRect.Url()" alt=""
+                     class="absolute bottom-0 left-4 lg:left-10 h-[430px] w-auto max-w-none -z-20" />
+            }
+
+            @* 2. Dots lite ovanför/åt höger *@
+            @if (backgroundDots != null)
+            {
+                <img src="@backgroundDots.Url()" alt=""
+                     class="lg:block absolute -top-8 left-[55%] w-[220px] h-auto max-w-none -z-10 opacity-70" />
+            }
+
+            @* 3. Själva personbilden *@
+            @if (image != null)
+            {
+                <img src="@image.Url()" alt="@image.Name"
+                     class="relative max-h-[460px] w-auto object-contain" />
+            }
+        </div>
+
+        <div class="space-y-6 text-body-text text-sm leading-relaxed">
+            @if (!string.IsNullOrWhiteSpace(title))
+            {
+                <h2 class="text-rte-lg font-bold text-primary mb-4 max-w-[24rem]">
+                    @Html.Raw(title)
+                </h2>
+            }
+
+            @* Adress *@
+            @if (siteSettings?.ContactAddress != null && !string.IsNullOrWhiteSpace(siteSettings.ContactAddress.ToString()))
+            {
+                <div class="flex gap-3">
+                    <img src="~/images/Icon_address.svg" alt="address icon"
+                         class="w-[16px] h-[21px] shrink-0 mt-[2px]" />
+                    <div>
+                        <p class="font-semibold text-primary">Office location</p>
+                        <p>@Html.Raw(siteSettings.ContactAddress)</p>
+                    </div>
+                </div>
+            }
+
+            @* Telefon *@
+            @if (siteSettings?.ContactPhone != null && !string.IsNullOrWhiteSpace(siteSettings.ContactPhone.ToString()))
+            {
+                <div class="flex gap-3">
+                    <img src="~/images/Icon_phone.svg" alt="phone icon"
+                         class="w-5 h-5 mt-[0.25rem]" />
+                    <div>
+                        <p class="font-semibold text-primary">Phone Number</p>
+                        <p>@Html.Raw(siteSettings.ContactPhone)</p>
+                    </div>
+                </div>
+            }
+
+            @* E-post *@
+            @if (siteSettings?.ContactEmail != null && !string.IsNullOrWhiteSpace(siteSettings.ContactEmail.ToString()))
+            {
+                <div class="flex gap-3">
+                    <img src="~/images/Icon_email.svg" alt="email icon"
+                         class="w-5 h-5 mt-1" />
+                    <div>
+                        <p class="font-semibold text-primary">Email address</p>
+                        <p>
+                            <a href="mailto:@email" class="no-underline hover:no-underline">
+                                @Html.Raw(siteSettings.ContactEmail)
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

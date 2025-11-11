@@ -1,8 +1,19 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Extensions
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContactPage>
 @{
-	Layout = "MainLayout.cshtml";
+	Layout = "mainLayout.cshtml";
 }
-<partial name="Partials/Layout/_PageHeader" model="(IPageHeader)Model" />
-Contact Us
+<partial name="Partials/Layout/_PageHeader" model="(IPageHeader)Model"/>
+
 @* <h1>@Model.BannerTitle</h1> *@
+
+
+<section class="py-[6rem] bg-neutral">
+     <div class="max-w-7xl mx-auto px-8 lg:px-0">
+        @if (Model.Sections != null && Model.Sections.Count > 0)
+          {
+           @await Html.GetBlockListHtmlAsync(Model.Sections)
+          }
+     </div>
+</section>
