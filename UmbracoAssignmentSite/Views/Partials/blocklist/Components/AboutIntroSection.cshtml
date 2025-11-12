@@ -1,0 +1,43 @@
+﻿@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+@using Umbraco.Extensions
+
+@{
+    var content = (ContentModels.AboutIntroSection)Model.Content;
+
+    var image   = content.AboutSectionImage;
+    var caption = content.AboutImageCaption;
+    var quote   = content.AboutIntroQuote;
+    var body    = content.AboutSectionBody;
+}
+
+<section class="py-[4rem]">
+  <div class="max-w-7xl mx-auto px-4 lg:px-0 grid gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] items-start">
+
+    <figure class="mx-auto">
+      @if (image != null)
+      {
+        <img src="@image.Url()" alt="@image.Name" class="h-auto" />
+      }
+      @if (!string.IsNullOrWhiteSpace(caption))
+      {
+        <figcaption class="mt-2 text-sm text-gray-500">@caption.Replace("\\u0026", "&")</figcaption>
+      }
+    </figure>
+
+        <div class="rte py-3 max-w-none">
+
+      @if (quote != null && !string.IsNullOrWhiteSpace(quote.ToString()))
+      {
+        <blockquote class="mt-2 italic text-body-text">
+          @Html.Raw(quote)
+        </blockquote>
+      }
+      @if (body != null && !string.IsNullOrWhiteSpace(body.ToString()))
+      {
+                <p class="text-rte-sm">@Html.Raw(body)</p>
+      }
+    </div>
+
+  </div>
+</section>
