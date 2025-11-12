@@ -4,4 +4,12 @@
 	Layout = "MainLayout.cshtml";
 }
 <partial name="Partials/Layout/_PageHeader" model="(IPageHeader)Model" />
-@Html.GetBlockListHtml(Model.Sections)
+
+<section class="py-[4rem]">
+    <div class="max-w-7xl mx-auto px-4 lg:px-0">
+        @if (Model.Sections != null && Model.Sections.Count > 0)
+        {
+            @await Html.GetBlockListHtmlAsync(Model.Sections)
+        }
+    </div>
+</section>

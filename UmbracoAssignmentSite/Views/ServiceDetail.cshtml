@@ -1,4 +1,5 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Extensions
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ServiceDetail>
 @{
 	Layout = "MainLayout.cshtml";
@@ -15,7 +16,14 @@
 			<div class="block w-px bg-border-gray"></div>
 			<div class="w-8/12 flex flex-col gap-2">
 				<div class="rte">@Html.Raw(Model.ServiceDetailBody)</div>
-			</div>		
+			</div>
+
 		</div>
+		@if (Model.ServiceDetailContentSection?.Any() == true)
+		{
+			<div class="py-[6rem] bg-neutral">
+				@Html.GetBlockListHtml(Model.ServiceDetailContentSection)
+			</div>
+		}
 	</div>
 </section>

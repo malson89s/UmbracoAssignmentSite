@@ -59,3 +59,8 @@ body {
 img {
     @apply h-auto;
 }
+.rte blockquote {
+    @apply mb-2 pl-0 border-l-0;
+}
+
+
