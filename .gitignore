@@ -377,3 +377,4 @@ umbraco/Logs/
 # Lokala/privata inställningar
 appsettings.*.local.json
 **/Properties/PublishProfiles/*.pubxml.user
+appsettings.Development.json
