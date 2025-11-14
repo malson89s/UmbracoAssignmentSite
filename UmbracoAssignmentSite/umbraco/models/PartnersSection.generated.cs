@@ -55,7 +55,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.3.3+644334c")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("partnerLabel")]
-		public virtual string PartnerLabel => this.Value<string>(_publishedValueFallback, "partnerLabel");
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString PartnerLabel => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "partnerLabel");
 
 		///<summary>
 		/// Partners List
