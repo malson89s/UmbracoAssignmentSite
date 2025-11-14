@@ -28,11 +28,24 @@ namespace UmbracoAssignmentSite.Controllers
             {
                 TempData["FormError"] = "Something went wrong while submitting your request. Please try again later.";
                 return RedirectToCurrentUmbracoPage();
-                
+
             }
 
             TempData["FormSuccess"] = "Thank you! Your request has been received and we will get back to you soon";
 
+            return RedirectToCurrentUmbracoPage();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult HandleServiceQuestionForm(ServiceQuestionFormViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                TempData["ServiceFormError"] = "Please fix the errors and try again.";
+                return CurrentUmbracoPage();
+            }
+            TempData["ServiceFormSuccess"] = "Thank you for your question! We’ll get back to you soon.";
             return RedirectToCurrentUmbracoPage();
         }
     }

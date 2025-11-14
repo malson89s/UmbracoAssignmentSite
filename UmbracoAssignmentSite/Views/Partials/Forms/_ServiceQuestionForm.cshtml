@@ -1,0 +1,33 @@
+﻿@model UmbracoAssignmentSite.ViewModels.ServiceQuestionFormViewModel
+
+@using (Html.BeginUmbracoForm("HandleServiceQuestionForm", "Form", FormMethod.Post, new { novalidate = "novalidate", id = "serviceQuestionForm" }))
+{
+	@Html.AntiForgeryToken()
+  <div class="grid md:grid-cols-2 gap-4">
+	<div>
+		<label asp-for="Name" class="sr-only"></label>
+			<input asp-for="Name" type="text" placeholder="@Html.DisplayNameFor(x => x.Name)" class="w-full p-3 italic border border-gray-300 focus:ring-2 focus:ring-primary focus:outline-none" />
+			<span asp-validation-for="Name"></span>
+		</div>
+
+		<div>
+			<label asp-for="Email" class="sr-only"></label>
+			<input asp-for="Email" type="text" placeholder="@Html.DisplayNameFor(x => x.Email)" class="w-full p-3 italic border border-gray-300 focus:ring-2 focus:ring-primary focus:outline-none" />
+			<span asp-validation-for="Email"></span>
+		</div>
+
+		<div class="md:col-span-2">
+			<label asp-for="Question" class="sr-only"></label>
+			<textarea asp-for="Question"
+					  placeholder="@Html.DisplayNameFor(x => x.Question)"
+					  class="w-full p-3 italic border border-gray-300 h-32 resize-none focus:ring-2 focus:ring-primary focus:outline-none"></textarea>
+			<span asp-validation-for="Question"></span>
+		</div>
+
+		<div class="md:col-span-1 pb-[1.0rem] mt-2 text-left">
+			<button type="submit" class="px-10 py-3 bg-primary text-secondary cursor-pointer hover:bg-gray-800 rounded-md hover:bg-gray-900 transition">
+				Submit
+			</button>
+		</div>
+</div>
+}

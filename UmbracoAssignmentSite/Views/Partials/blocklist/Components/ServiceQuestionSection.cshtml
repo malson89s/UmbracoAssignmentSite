@@ -1,0 +1,42 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+@using UmbracoAssignmentSite.ViewModels
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
+@{
+    var content = (ContentModels.ServiceQuestionSection)Model.Content;
+
+    var formVm = new ServiceQuestionFormViewModel();
+}
+
+<section class="py-[4rem] bg-neutral">
+    <div class="max-w-5xl mx-auto px-4">
+        <div class="bg-neutral shadow-xl px-10 py-10">
+            <p class="text-xs tracking-[0.25em] uppercase text-secondary mb-2">
+                @content.ServiceQuestionLabel
+            </p>
+
+            <p class="text-[1.75rem] leading-tight font-bold mb-4">
+                @Html.Raw(content.ServiceQuestionTitle)
+            </p>
+
+            <p class="text-sm text-gray-600 mb-8 max-w-[554px]">
+                @Html.Raw(content.ServiceQuestionDescription)
+            </p>
+
+            <partial name="Partials/Forms/_ServiceQuestionForm" model="formVm" />
+
+            @if (TempData["ServiceFormSuccess"] != null)
+            {
+                <div class="mt-4 bg-green-50 text-green-700 p-3 rounded">
+                    @TempData["ServiceFormSuccess"]
+                </div>
+            }
+            else if (TempData["ServiceFormError"] != null)
+            {
+                <div class="mt-4 bg-red-50 text-red-700 p-3 rounded">
+                    @TempData["ServiceFormError"]
+                </div>
+            }
+        </div>
+    </div>
+</section>
