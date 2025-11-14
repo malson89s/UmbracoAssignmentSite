@@ -1,6 +1,12 @@
 ﻿.form-btn {
    @apply w-full bg-accent text-primary text-center font-bold rounded-md cursor-pointer select-none py-3 px-12 text-[1.125rem];
 }
+.form-btn-dark {
+    @apply bg-primary text-white;
+}
+.form-btn--question {
+    @apply w-auto inline-block px-6 py-2 text-[0.875rem];
+}
 
 .input-validation-error {
    @apply border-red-500 focus:ring-1 focus:ring-red-500;
