@@ -1,0 +1,58 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using UmbracoAssignmentSite.ViewModels
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
+@{
+    var content = (ContentModels.ProjectCallbackSection)Model.Content;
+    var settings = Model.Settings as ContentModels.AboutCallbackSettings;
+
+    var formVM = new CallbackFormViewModel
+    {
+        Options = settings?.CallbackRequestOptions ?? []
+    };
+}
+
+<section class="relative bg-neutral">
+    <div class="w-full h-[420px] overflow-hidden bg-neutral">
+        <div class="w-full h-full object-cover">
+            @Html.Raw(content.ProjectCallbackBody)
+        </div>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-4">
+        <div class="relative bg-neutral z-10 -mt-32 bg-neutral shadow-xl">
+
+            <p class="text-xs tracking-[0.25em] uppercase text-secondary mb-1 pt-3 pb-0">
+                @Html.Raw(content.ProjectCallbackLabel)
+            </p>
+
+            <div class="pt-1 pb-6 px-14 text-center">
+                <p class="text-[2rem] leading-tight font-bold mx-auto">
+                    @Html.Raw(content.ProjectCallbackFormTitle)
+                </p>
+
+                <p class="text-sm text-gray-600 max-w-[554px] mx-auto mb-8">
+                    @Html.Raw(content.ProjectCallbackFormDescription)
+                </p>
+            </div>
+
+            <div class="px-8 pb-8 bg-neutral">
+                <partial name="Partials/Forms/_CallbackFormWideMap" model="formVM" />
+
+                @if (TempData["FormSuccess"] != null)
+                {
+                    <div class="bg-green-50 text-green-700 p-4 mt-4 rounded-md">
+                        @TempData["FormSuccess"]
+                    </div>
+                }
+                else if (TempData["FormError"] != null)
+                {
+                    <div class="bg-red-50 text-red-700 p-4 mt-4 rounded-md">
+                        @TempData["FormError"]
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>
+</section>

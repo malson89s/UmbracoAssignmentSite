@@ -6,7 +6,7 @@
     var content = (ContentModels.AboutIntroSection)Model.Content;
 
     var image   = content.AboutSectionImage;
-    var caption = content.AboutImageCaption;
+    var captionText = content.AboutImageCaption?.ToString();
     var quote   = content.AboutIntroQuote;
     var body    = content.AboutSectionBody;
 }
@@ -19,9 +19,9 @@
       {
         <img src="@image.Url()" alt="@image.Name" class="h-auto" />
       }
-      @if (!string.IsNullOrWhiteSpace(caption))
+      @if (!string.IsNullOrWhiteSpace(captionText))
       {
-        <figcaption class="mt-2 text-sm text-gray-500">@caption.Replace("\\u0026", "&")</figcaption>
+        <figcaption class="mt-2 text-sm text-gray-500">@captionText.Replace("\\u0026", "&")</figcaption>
       }
     </figure>
 
