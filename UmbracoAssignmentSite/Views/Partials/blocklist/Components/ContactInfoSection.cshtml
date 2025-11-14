@@ -24,21 +24,18 @@
 <section class="py-[4rem] bg-white-100 overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 lg:px-0 grid gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] items-center">
         <div class="relative flex justify-center">
-            @* 1. Rektangeln bakom personen *@
             @if (backgroundRect != null)
             {
                 <img src="@backgroundRect.Url()" alt=""
                      class="absolute bottom-0 left-4 lg:left-10 h-[430px] w-auto max-w-none -z-20" />
             }
 
-            @* 2. Dots lite ovanför/åt höger *@
             @if (backgroundDots != null)
             {
                 <img src="@backgroundDots.Url()" alt=""
                      class="lg:block absolute -top-8 left-[55%] w-[220px] h-auto max-w-none -z-10 opacity-70" />
             }
 
-            @* 3. Själva personbilden *@
             @if (image != null)
             {
                 <img src="@image.Url()" alt="@image.Name"
@@ -54,7 +51,7 @@
                 </h2>
             }
 
-            @* Adress *@
+            @* Address *@
             @if (siteSettings?.ContactAddress != null && !string.IsNullOrWhiteSpace(siteSettings.ContactAddress.ToString()))
             {
                 <div class="flex gap-3">
@@ -67,7 +64,7 @@
                 </div>
             }
 
-            @* Telefon *@
+            @* Phone *@
             @if (siteSettings?.ContactPhone != null && !string.IsNullOrWhiteSpace(siteSettings.ContactPhone.ToString()))
             {
                 <div class="flex gap-3">
@@ -80,7 +77,7 @@
                 </div>
             }
 
-            @* E-post *@
+            @* Email *@
             @if (siteSettings?.ContactEmail != null && !string.IsNullOrWhiteSpace(siteSettings.ContactEmail.ToString()))
             {
                 <div class="flex gap-3">
