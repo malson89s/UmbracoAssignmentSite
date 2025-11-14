@@ -1,0 +1,26 @@
+﻿@model UmbracoAssignmentSite.ViewModels.AsideSupportFormViewModel
+
+@using (Html.BeginUmbracoForm("HandleAsideSupportForm", "Form", FormMethod.Post, new { novalidate = "novalidate", id = "asideSupportForm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="space-y-3">
+        <div class="relative bg-neutral">
+            <label asp-for="Email" class="sr-only"></label>
+
+            <input asp-for="Email"
+                   type="text"
+                   placeholder="@Html.DisplayNameFor(x => x.Email)"
+                   class="text-primary w-full p-3 pr-10 italic border border-gray-300 focus:ring-2 focus:ring-primary focus:outline-none" />
+
+            @* hjälp av chatgpt *@
+            <span class=" bg-neutral pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-400">
+                <i class="fa-regular fa-envelope"></i>
+            </span>
+
+            <span asp-validation-for="Email" class="input-validation-error"></span>
+        </div>
+
+
+    </div>
+  }

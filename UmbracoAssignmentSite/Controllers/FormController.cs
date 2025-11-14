@@ -48,6 +48,21 @@ namespace UmbracoAssignmentSite.Controllers
             TempData["ServiceFormSuccess"] = "Thank you for your question! We’ll get back to you soon.";
             return RedirectToCurrentUmbracoPage();
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult HandleAsideSupportForm(AsideSupportFormViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                TempData["AsideFormError"] = "Please fill in a valid e-mail.";
+                return CurrentUmbracoPage();
+            }
+
+            // Hjälp av chatgpt
+            TempData["AsideFormSuccess"] = "Thank you! We will contact you soon.";
+
+            return RedirectToCurrentUmbracoPage();
+        }
     }
 
 }
