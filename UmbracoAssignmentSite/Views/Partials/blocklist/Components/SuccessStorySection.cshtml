@@ -1,0 +1,57 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
+@{
+
+	var content = (ContentModels.SuccessStorySection)Model.Content;
+	var bgImage = content.SuccessStoryImageBackground;
+	var mainImage = content.SuccessStoryImage;
+
+	var label = content.SuccesStoryLabel?.ToString();
+	var title = content.SuccessStoryTitle?.ToString();
+}
+
+<section class="-py-10 text-white" style="background-color:#48524C; @(bgImage != null ? $"background-image:url('{bgImage.Url()}'); background-repeat:no-repeat; background-position:center; " : "")">
+	<div class="max-w-7xl mx-auto px-4 flex flex-col items-center">
+
+		<div class="text-center mb-10">
+			@if (!string.IsNullOrWhiteSpace(label))
+			{
+				<p class="text-xs tracking-[0.25em] uppercase mb-2 opacity-80">
+					@Html.Raw(label)
+				</p>
+			}
+			@if (!string.IsNullOrWhiteSpace(title))
+			{
+				<h2 class="text-3xl md:text-4xl font-semibold">
+					@Html.Raw(title)
+				</h2>
+			}
+		</div>
+
+		<div class="grid w-full max-w-4xl md:max-w-5xl grid-cols-1 md:grid-cols-3 gap-y-8 md:gap-y-0 md:gap-x-16 text-center mb-12">
+			<div>
+				<p class="text-5xl md:text-6xl font-semibold mb-2">@content.CustomersNumber</p>
+				<p class="text-sm opacity-90">@content.CustomersText</p>
+			</div>
+
+			<div>
+				<p class="text-5xl md:text-6xl font-semibold mb-2">@content.ProjectsNumber</p>
+				<p class="text-sm opacity-90">@content.ProjectsText</p>
+			</div>
+
+			<div>
+				<p class="text-5xl md:text-6xl font-semibold mb-2">@content.BranchesNumber</p>
+				<p class="text-sm opacity-90">@content.BranchesText</p>
+			</div>
+
+		</div>
+		@if (mainImage != null)
+		{
+			<div class="w-full max-w-4xl mt-2 md:mt-4">
+				<img src="@mainImage.Url()" alt="@mainImage.Name" class="w-full h-auto object-cover shadow-lg" />
+			</div>
+		}
+
+	</div>
+</section>
