@@ -1,0 +1,53 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
+@{
+	var content = (ContentModels.TestimonialSection)Model.Content;
+	var image = content.TestimonialImage;
+
+	var label = content.TestimonialLabel?.ToString();
+	var title = content.TestimonialTitle?.ToString();
+	var text = content.TestimonialText?.ToString();
+}
+
+<section class="bg-white-100">
+
+	<div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 items-center">
+		<div class="space-y-4">
+			@if (!string.IsNullOrWhiteSpace(label))
+			{
+				<p class="text-xs tracking-[0.25em] uppercase text-gray-500">
+					@Html.Raw(label)
+				</p>
+			}
+			@if (!string.IsNullOrWhiteSpace(title))
+			{
+				<h2 class="text-3xl md:text-4xl font-semibold text-gray-900">
+					@Html.Raw(title)
+				</h2>
+			}
+			@if (!string.IsNullOrWhiteSpace(text))
+			{
+				<p class="text-gray-600">
+					@Html.Raw(text)
+				</p>
+			}
+			<div class="flex items-center pt-2 text-gray-400 text-lg">
+				&#9733;&#9733;&#9733;&#9733;&#9733;
+			</div>
+			<div class="pt-2">
+				<p class="font-semibold text-gray-900">@content.TestimonialName</p>
+				<p class="text-sm text-gray-500">@content.TestimonialCompany</p>
+			</div>
+		   </div>
+
+		   @if (image != null)
+		{
+			<div class="h-full">
+				<img src="@image.Url()" alt="@image.Name" class="w-full h-full col-start-2" />
+			</div>
+		}
+	</div>
+	@* hjälp av chatgpt *@
+
+</section>
